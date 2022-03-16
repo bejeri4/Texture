@@ -29,6 +29,20 @@ let sharedDefines: [CSetting] = [
                                 // always disabled
                                 .define("IG_LIST_COLLECTION_VIEW", to: "0"),]
 
+let cxxSettingsHeadersSearchPath: [CXXSetting] = [.headerSearchPath("."),
+                                     .headerSearchPath("Base"),
+                                     .headerSearchPath("Debug"),
+                                     .headerSearchPath("Details"),
+                                     .headerSearchPath("Details/Transactions"),
+                                     .headerSearchPath("Layout"),
+                                     .headerSearchPath("Private"),
+                                     .headerSearchPath("Private/Layout"),
+                                     .headerSearchPath("TextExperiment/Component"),
+                                     .headerSearchPath("TextExperiment/String"),
+                                     .headerSearchPath("TextExperiment/Utility"),
+                                     .headerSearchPath("TextKit"),
+                                     .headerSearchPath("tvOS"),]
+
 let cxxSettings: [CXXSetting] = [.define("AS_USE_VIDEO", to: "1"),]
 
 
@@ -69,14 +83,14 @@ let package = Package(
             dependencies: ["PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKit",
             cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: false),
-            cxxSettings: headersSearchPath + cxxSettings
+            cxxSettings: cxxSettingsHeadersSearchPath + cxxSettings
         ),
         .target(
             name: "AsyncDisplayKitIGListKit",
             dependencies: ["IGListKit", "PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKitIGListKit/AsyncDisplayKit",
             cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: true),
-            cxxSettings: headersSearchPath + cxxSettings
+            cxxSettings: cxxSettingsHeadersSearchPath + cxxSettings
         ),
     ],
     cLanguageStandard: .c11,
