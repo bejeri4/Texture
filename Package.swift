@@ -18,6 +18,8 @@ let headersSearchPath: [CSetting] = [.headerSearchPath("."),
                                      .headerSearchPath("tvOS"),]
 
 let sharedDefines: [CSetting] = [
+                                .define("AS_USE_VIDEO", to: "1"),
+  
                                 // Disable "old" textnode by default for SPM
                                 .define("AS_ENABLE_TEXTNODE", to: "0"),
     
