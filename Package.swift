@@ -4,6 +4,7 @@
 import PackageDescription
 
 let headersSearchPath: [CSetting] = [.headerSearchPath("."),
+                                     .headerSearchPath("Source"),
                                      .headerSearchPath("Base"),
                                      .headerSearchPath("Debug"),
                                      .headerSearchPath("Details"),
