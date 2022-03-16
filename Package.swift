@@ -18,8 +18,6 @@ let headersSearchPath: [CSetting] = [.headerSearchPath("."),
                                      .headerSearchPath("tvOS"),]
 
 let sharedDefines: [CSetting] = [
-                                .define("AS_USE_VIDEO", to: "1"),
-  
                                 // Disable "old" textnode by default for SPM
                                 .define("AS_ENABLE_TEXTNODE", to: "0"),
     
@@ -29,7 +27,7 @@ let sharedDefines: [CSetting] = [
                                 // always disabled
                                 .define("IG_LIST_COLLECTION_VIEW", to: "0"),]
 
-let cxxSettings: [CXXSetting]] = [.define("AS_USE_VIDEO", to: "1"),]
+let cxxSettings: [CXXSetting] = [.define("AS_USE_VIDEO", to: "1"),]
 
 
 func IGListKit(enabled: Bool) -> [CSetting] {
