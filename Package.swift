@@ -29,17 +29,7 @@ let sharedDefines: [CSetting] = [
                                 // always disabled
                                 .define("IG_LIST_COLLECTION_VIEW", to: "0"),]
 
-let cxxSettings: [CXXSetting]] = [
-                                .define("AS_USE_VIDEO", to: "1"),
-  
-                                // Disable "old" textnode by default for SPM
-                                .define("AS_ENABLE_TEXTNODE", to: "0"),
-    
-                                // PINRemoteImage always available for Texture
-                                .define("AS_PIN_REMOTE_IMAGE", to: "1"),
-                                
-                                // always disabled
-                                .define("IG_LIST_COLLECTION_VIEW", to: "0"),]
+let cxxSettings: [CXXSetting]] = [.define("AS_USE_VIDEO", to: "1"),]
 
 
 func IGListKit(enabled: Bool) -> [CSetting] {
@@ -78,13 +68,15 @@ let package = Package(
             name: "AsyncDisplayKit",
             dependencies: ["PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKit",
-            cSettings: headersSearchPath + sharedDefines + cxxSettings + IGListKit(enabled: false)
+            cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: false),
+            cxxSettings: cxxSettings
         ),
         .target(
             name: "AsyncDisplayKitIGListKit",
             dependencies: ["IGListKit", "PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKitIGListKit/AsyncDisplayKit",
-            cSettings: headersSearchPath + sharedDefines + cxxSettings + IGListKit(enabled: true)
+            cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: true)
+            cxxSettings: cxxSettings
         ),
     ],
     cLanguageStandard: .c11,
