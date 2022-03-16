@@ -69,14 +69,14 @@ let package = Package(
             dependencies: ["PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKit",
             cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: false),
-            cxxSettings: cxxSettings
+            cxxSettings: headersSearchPath + cxxSettings
         ),
         .target(
             name: "AsyncDisplayKitIGListKit",
             dependencies: ["IGListKit", "PINRemoteImage"],
             path: "spm/Sources/AsyncDisplayKitIGListKit/AsyncDisplayKit",
             cSettings: headersSearchPath + sharedDefines + IGListKit(enabled: true),
-            cxxSettings: cxxSettings
+            cxxSettings: headersSearchPath + cxxSettings
         ),
     ],
     cLanguageStandard: .c11,
